@@ -14,13 +14,13 @@ function Home(){
                 setLoading(false)
             })
         }
-    }, [])
+    }, [posts])
 
     if (loading) {
         return (<div>Loading</div>)
     } else{
         let cards = []
-        cards = posts.map(post=><BlogCard key={uuid()} id={post.id} author={post.author} />)
+        cards = posts.map(post=><BlogCard key={uuid()} id={post.id} author={post.author} content={post.content} />)
         return (<div>
             <h1>Welcome to i18n_blog</h1>
             {cards}

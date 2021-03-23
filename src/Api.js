@@ -11,6 +11,11 @@ class BlogApi {
         return result.data
     }
 
+    static async getBlog(token, id){
+        const blog = await axios.get(`${BASE_API_URL}/posts/${id}`, {params: {_token: token}})
+        return blog
+    }
+
     static async getBlogAndAuthor(token, blogId, authorId){
         const blog = await axios.get(`${BASE_API_URL}/posts/${blogId}`, {params: {_token: token}})
         const author = await axios.get(`${BASE_API_URL}/users/${authorId}`, {params: {_token: token}})
@@ -25,8 +30,7 @@ class BlogApi {
             const id = user.id
             const result = await axios.get(`${BASE_API_URL}/users/${id}`)
             return result
-        }
-        
+        } 
     }
 }
 

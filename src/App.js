@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
 import BlogApi from './Api'
 import './App.css';
-import Home from './pages/Home'
+import Routes from './pages/Routes';
+import { BrowserRouter } from "react-router-dom";
 import TokenContext from './TokenContext'
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem('token'))
+  const [token] = useState(localStorage.getItem('token'))
   const [user, setUser] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
@@ -26,10 +27,16 @@ function App() {
     }
   }, [token])
 
+  if (isLoading){
+    return (<p>Loading</p>)
+  }
+
   return (
     <div className="App">
       <TokenContext.Provider value={{token, user}}>
-        <Home />
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
       </TokenContext.Provider>
     </div>
   );
