@@ -32,6 +32,16 @@ class BlogApi {
             return result
         } 
     }
+
+    static async createBlog(token, blog){
+        let user = jwt.decode(token)
+        if (user){
+            const id = user.id
+            blog.author = id;
+            const result = await axios.post(`${BASE_API_URL}/posts?_token=${token}`, blog)
+            return result
+        }
+    }
 }
 
 export default BlogApi

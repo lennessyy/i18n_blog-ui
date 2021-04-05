@@ -20,7 +20,11 @@ function Blog(){
         return <div>Loading</div>
     } else return(<>
         <h2><strong>{blog.title}</strong></h2>
+        <h3>By: {blog.author}</h3>
+        <h4>Language: {blog.locale}</h4>
         <p>{blog.content}</p>
+        <p>Created at: {Intl.DateTimeFormat(blog.locale).format(new Date(blog.created_at))}</p>
+        <p>Tags: {blog.tags.length !== 0 ? blog.tags.join(", ") : ""}</p>
     </>)
 }
 

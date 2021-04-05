@@ -25,7 +25,7 @@ function BlogCard({id, author}){
     if (loading){
         return <div>Loading</div>
     } else return(<>
-        <h2 onClick={handleClick}><strong>{blog.title}</strong> - {user.id}</h2>
+        <h2 onClick={handleClick}><strong>{blog.title}</strong> - {user.username}</h2>
     </>)
 }
 

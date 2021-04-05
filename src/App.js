@@ -4,6 +4,7 @@ import './App.css';
 import Routes from './pages/Routes';
 import { BrowserRouter } from "react-router-dom";
 import TokenContext from './TokenContext'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [token] = useState(localStorage.getItem('token'))
@@ -13,7 +14,6 @@ function App() {
   useEffect(() => {
     if (token) {
       BlogApi.getUser(token).then((res) => {
-        console.log('Token verified')
         setUser(res.user)
         setIsLoading(false)
       }
