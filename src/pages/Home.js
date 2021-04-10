@@ -6,8 +6,8 @@ import { v4 as uuid } from 'uuid'
 import { useHistory } from 'react-router-dom'
 
 function Home(){
-    let [posts, setPosts] = useState()
-    let [loading, setLoading] = useState(true)
+    let [ posts, setPosts ] = useState()
+    let [ loading, setLoading ] = useState(true)
 
     useEffect(()=>{
         if (!posts){
