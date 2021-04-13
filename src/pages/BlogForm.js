@@ -11,7 +11,7 @@ export default function BlogForm(){
 
     const initialState = {
         content: "",
-        locale: "",
+        locale: navigator.language.slice(0, 2),
         title: "",
         tags: []
     }
@@ -74,14 +74,6 @@ export default function BlogForm(){
                 </Form.Label>
                 <Col>
                 <Form.Control name="tags" onChange={handleChange} size="sm" type="text" placeholder="Small text" />
-                </Col>
-            </Form.Row>
-            <Form.Row>
-                <Form.Label column="sm" lg={2}>
-                Locale
-                </Form.Label>
-                <Col>
-                <Form.Control name="locale" onChange={handleChange} size="sm" type="text" placeholder="Small text" />
                 </Col>
             </Form.Row>
         </Form.Group>
