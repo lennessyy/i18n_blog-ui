@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import BlogApi from '../Api'
+import {FormattedMessage} from 'react-intl'
 
 function BlogCard({id, author}){
     let [blog, setBlog] = useState()
@@ -23,7 +24,9 @@ function BlogCard({id, author}){
     }, [author, blog, id])
 
     if (loading){
-        return <div>Loading</div>
+        return <div>
+            <FormattedMessage id="loading"></FormattedMessage>
+        </div>
     } else return(<>
         <h2 onClick={handleClick}><strong>{blog.title}</strong> - {user.username}</h2>
     </>)

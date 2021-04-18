@@ -5,6 +5,8 @@ import Routes from './pages/Routes';
 import { BrowserRouter } from "react-router-dom";
 import TokenContext from './TokenContext'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { IntlProvider } from "react-intl";
+import messages from './messages'
 
 function App() {
   const [token] = useState(localStorage.getItem('token'))
@@ -31,12 +33,16 @@ function App() {
     return (<p>Loading</p>)
   }
 
+  let locale = navigator.language.slice(0, 2);
+
   return (
     <div className="App">
       <TokenContext.Provider value={{token, user}}>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
+        <IntlProvider locale={locale} messages={messages[locale]}>
+          < BrowserRouter>
+            <Routes />
+           </BrowserRouter>
+        </IntlProvider>
       </TokenContext.Provider>
     </div>
   );

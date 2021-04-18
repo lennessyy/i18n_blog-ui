@@ -5,6 +5,7 @@ import TokenContext from '../TokenContext'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import { FormattedMessage } from 'react-intl'
 
 export default function BlogForm(){
     const history = useHistory();
@@ -52,7 +53,7 @@ export default function BlogForm(){
         <Form.Group>
             <Form.Row>
                 <Form.Label column="lg" lg={2}>
-                Title
+                    <FormattedMessage id="formTitle"></FormattedMessage>
                 </Form.Label>
                 <Col>
                 <Form.Control name="title" onChange={handleChange} size="lg" type="text" placeholder="Large text" />
@@ -61,7 +62,7 @@ export default function BlogForm(){
              <br />
             <Form.Row>
                 <Form.Label column lg={2}>
-                Content
+                    <FormattedMessage id="formContent"></FormattedMessage>
                 </Form.Label>
                 <Col>
                 <Form.Control name="content" onChange={handleChange} type="text" placeholder="Normal text" />
@@ -70,13 +71,15 @@ export default function BlogForm(){
             <br />
             <Form.Row>
                 <Form.Label column="sm" lg={2}>
-                Tags
+                    <FormattedMessage id="formTags"></FormattedMessage>
                 </Form.Label>
                 <Col>
                 <Form.Control name="tags" onChange={handleChange} size="sm" type="text" placeholder="Small text" />
                 </Col>
             </Form.Row>
         </Form.Group>
-        <Button variant="primary" onClick={()=>handleSubmit(formData)}>Submit</Button>
+        <Button variant="primary" onClick={()=>handleSubmit(formData)}>
+            <FormattedMessage id="formSubmit"></FormattedMessage>
+        </Button>
     </>
 }

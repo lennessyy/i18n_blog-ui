@@ -4,6 +4,9 @@ import BlogCard from "./BlogCard"
 import Button from 'react-bootstrap/Button'
 import { v4 as uuid } from 'uuid'
 import { useHistory } from 'react-router-dom'
+import { IntlProvider, FormattedMessage } from "react-intl";
+import messages from '../messages'
+
 
 function Home(){
     let [ posts, setPosts ] = useState()
@@ -24,16 +27,24 @@ function Home(){
         history.push('/posts/new');
     }
 
+    // Get locale from browser
+    let locale = "zh" //navigator.language.slice(0, 2)
+
     if (loading) {
-        return (<div>Loading</div>)
+        return (<div><FormattedMessage id="loading"></FormattedMessage></div>)
     } else{
         let cards = []
         cards = posts.map(post=><BlogCard key={uuid()} id={post.id} author={post.author} content={post.content} />)
-        return (<div>
-            <h1>Welcome to i18n_blog</h1>
-            <Button onClick={handleClick} vairant="primary">New Blog</Button>
-            {cards}
-        </div>)
+        return (
+        <IntlProvider locale={locale} messages={messages[locale]}>
+            <div>
+                <h1><FormattedMessage id="greeting"></FormattedMessage></h1>
+                <Button onClick={handleClick} vairant="primary">
+                    <FormattedMessage id="createNew"></FormattedMessage>
+                </Button>
+                {cards}
+            </div>
+        </IntlProvider>)
     }
     
 }
