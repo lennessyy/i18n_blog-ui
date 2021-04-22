@@ -33,18 +33,18 @@ function App() {
     return (<p>Loading</p>)
   }
 
-  let locale = navigator.language.slice(0, 2);
+  let locale = navigator.language.slice(0, 2) || "en";
 
   return (
-    <div className="App">
-      <TokenContext.Provider value={{token, user}}>
+    <TokenContext.Provider value={{token, user}}>
         <IntlProvider locale={locale} messages={messages[locale]}>
-          < BrowserRouter>
-            <Routes />
-           </BrowserRouter>
+          <div className="App">
+                < BrowserRouter>
+                  <Routes />
+                </BrowserRouter>
+          </div>
         </IntlProvider>
-      </TokenContext.Provider>
-    </div>
+    </TokenContext.Provider>
   );
 }
 
