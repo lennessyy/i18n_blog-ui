@@ -4,6 +4,7 @@ import BlogApi from '../Api'
 import TokenContext from '../TokenContext'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import { FormattedMessage } from 'react-intl'
 
@@ -49,14 +50,15 @@ export default function BlogForm(){
         history.push('/')
     }
 
-    return <>
+    return (
+    <Container style={{padding: "5rem"}}>
         <Form.Group>
             <Form.Row>
                 <Form.Label column="lg" lg={2}>
                     <FormattedMessage id="formTitle"></FormattedMessage>
                 </Form.Label>
                 <Col>
-                <Form.Control name="title" onChange={handleChange} size="lg" type="text" placeholder="Large text" />
+                <Form.Control name="title" onChange={handleChange} size="lg" type="text"/>
                 </Col>
             </Form.Row>
              <br />
@@ -65,7 +67,7 @@ export default function BlogForm(){
                     <FormattedMessage id="formContent"></FormattedMessage>
                 </Form.Label>
                 <Col>
-                <Form.Control name="content" onChange={handleChange} type="text" placeholder="Normal text" />
+                <Form.Control name="content" onChange={handleChange} as="textarea" rows={10} />
                 </Col>
             </Form.Row>
             <br />
@@ -74,12 +76,12 @@ export default function BlogForm(){
                     <FormattedMessage id="formTags"></FormattedMessage>
                 </Form.Label>
                 <Col>
-                <Form.Control name="tags" onChange={handleChange} size="sm" type="text" placeholder="Small text" />
+                <Form.Control name="tags" onChange={handleChange} size="sm" type="text" />
                 </Col>
             </Form.Row>
         </Form.Group>
         <Button variant="primary" onClick={()=>handleSubmit(formData)}>
             <FormattedMessage id="formSubmit"></FormattedMessage>
         </Button>
-    </>
+    </Container>)
 }

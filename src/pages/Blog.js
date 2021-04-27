@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import { useParams } from 'react-router'
 import BlogApi from '../Api'
 import { FormattedMessage } from 'react-intl'
+import { Container } from 'react-bootstrap'
 
 function Blog(){
     let { id } = useParams()
@@ -31,14 +32,13 @@ function Blog(){
         }
         
         return(
-        <div>
-            <h2><strong>{blog.title}</strong></h2>
-            <h3><FormattedMessage id="byAuthor" values={{name:blog.author}}></FormattedMessage></h3>
-            <h4><FormattedMessage id="language" values={{language:blog.locale}}></FormattedMessage></h4>
+        <Container>
+            <h1 style={{margin:"3rem 0"}}><strong>{blog.title}</strong></h1>
+            <h3 style={{margin:"3rem 0"}}><FormattedMessage id="byAuthor" values={{name:blog.author}}></FormattedMessage></h3>
             <p>{blog.content}</p>
             <p><FormattedMessage id="createdAt" values={{time: Intl.DateTimeFormat(blog.locale).format(new Date(blog.created_at))}}></FormattedMessage></p>
             <p><FormattedMessage id="tags"></FormattedMessage> {blog.tags.length !== 0 ? blog.tags.join(", ") : ""}</p>
-        </div>)
+        </Container>)
     }
 }
 

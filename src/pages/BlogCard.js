@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import BlogApi from '../Api'
 import {FormattedMessage} from 'react-intl'
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
 
 function BlogCard({id, author}){
     let [blog, setBlog] = useState()
@@ -27,9 +29,20 @@ function BlogCard({id, author}){
         return <div>
             <FormattedMessage id="loading"></FormattedMessage>
         </div>
-    } else return(<>
-        <h2 onClick={handleClick}><strong>{blog.title}</strong> - {user.username}</h2>
-    </>)
+    } else return(
+        <Col xs="3" style={{margin: "1rem 0"}}>
+            <Card>
+                <Card.Body>
+                    <Card.Title>
+                        {blog.title}
+                    </Card.Title>
+                    <Card.Subtitle>
+                        {user.username}
+                    </Card.Subtitle>
+                    <Card.Link onClick={handleClick}>Read</Card.Link>
+                </Card.Body>
+            </Card>
+        </Col>)
 }
 
 export default BlogCard

@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import BlogApi from '../Api'
 import BlogCard from "./BlogCard"
 import Button from 'react-bootstrap/Button'
+import {Jumbotron, Container, Row} from 'react-bootstrap'
 import { v4 as uuid } from 'uuid'
 import { useHistory } from 'react-router-dom'
 import { FormattedMessage } from "react-intl";
@@ -33,12 +34,19 @@ function Home(){
         let cards = []
         cards = posts.map(post=><BlogCard key={uuid()} id={post.id} author={post.author} content={post.content} />)
         return (
-            <div>
-                <h1><FormattedMessage id="greeting"></FormattedMessage></h1>
-                <Button onClick={handleClick} vairant="primary">
-                    <FormattedMessage id="createNew"></FormattedMessage>
-                </Button>
-                {cards}
+            <div id="home">
+                <Jumbotron id="welcome" style ={{padding: "5rem"}}>
+                    <h1 style={{margin: "2rem 0"}}><FormattedMessage id="greeting"></FormattedMessage></h1>
+                
+                    <Button onClick={handleClick} vairant="primary">
+                        <FormattedMessage id="createNew"></FormattedMessage>
+                    </Button>
+                </Jumbotron>
+                <Container>
+                    <Row>
+                       {cards}
+                    </Row>   
+                </Container>  
             </div>)
     }
     
