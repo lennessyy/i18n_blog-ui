@@ -4,6 +4,7 @@ import BlogApi from '../Api'
 import {FormattedMessage} from 'react-intl'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 function BlogCard({id, author}){
     let [blog, setBlog] = useState()
@@ -31,7 +32,7 @@ function BlogCard({id, author}){
         </div>
     } else return(
         <Col xs="3" style={{margin: "1rem 0"}}>
-            <Card>
+            <Card> 
                 <Card.Body>
                     <Card.Title>
                         {blog.title}
@@ -39,7 +40,7 @@ function BlogCard({id, author}){
                     <Card.Subtitle>
                         {user.username}
                     </Card.Subtitle>
-                    <Card.Link onClick={handleClick}>Read</Card.Link>
+                    <Button onClick={handleClick} variant="dark" style={{margin:"1rem 0 0 0"}}>Read</Button>
                 </Card.Body>
             </Card>
         </Col>)
