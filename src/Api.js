@@ -42,6 +42,11 @@ class BlogApi {
             return result
         }
     }
+
+    static async register(payload){
+        const result = await axios.post(`${BASE_API_URL}/users`, payload)
+        return result.data
+    }
 }
 
 export default BlogApi

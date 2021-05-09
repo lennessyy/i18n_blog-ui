@@ -10,7 +10,9 @@ const messages = {
         formTitle: "Title",
         formContent: "Content: ",
         formTags: "Tags: ",
-        formSubmit: "Submit"
+        formSubmit: "Submit",
+        signup: "Sign up",
+        signin: "Sign in"
     },
     zh: {
         greeting: "欢迎，这里是你的双语博客。",
@@ -23,7 +25,9 @@ const messages = {
         formTitle: "标题",
         formContent: "内容",
         formTags: "标签",
-        formSubmit: "发表"
+        formSubmit: "发表",
+        signup: "注册",
+        signin: "登录"
     }
 }
 
