@@ -28,6 +28,7 @@ class BlogApi {
         let user = jwt.decode(token)
         if (user){
             const id = user.id
+            console.log(id)
             const result = await axios.get(`${BASE_API_URL}/users/${id}`)
             return result
         } 
@@ -45,6 +46,11 @@ class BlogApi {
 
     static async register(payload){
         const result = await axios.post(`${BASE_API_URL}/users`, payload)
+        return result.data
+    }
+
+    static async authenticate(payload){
+        const result = await axios.post(`${BASE_API_URL}/users/authenticate`, payload)
         return result.data
     }
 }

@@ -3,6 +3,7 @@ import Home from './Home'
 import Blog from './Blog'
 import BlogForm from "./BlogForm"
 import Signup from './Signup'
+import Signin from './Signin'
 
 function Routes(){
     return(
@@ -12,6 +13,9 @@ function Routes(){
             </Route>
             <Route exact path="/signup">
                 <Signup />
+            </Route>
+            <Route exact path="/signin">
+                <Signin />
             </Route>
             <Route exact path="/posts/new">
                 <BlogForm />

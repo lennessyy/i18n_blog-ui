@@ -17,6 +17,7 @@ function App() {
     if (token) {
       BlogApi.getUser(token).then((res) => {
         setUser(res.user)
+        console.log(res.user)
         setIsLoading(false)
       }
       ).catch((error) => {

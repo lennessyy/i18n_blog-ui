@@ -14,6 +14,7 @@ function Home(){
     let [ loading, setLoading ] = useState(true)
     // context: {token: "", user: {}}
     const context = useContext(TokenContext)
+    console.log(context)
 
     useEffect(()=>{
         if (!posts){
@@ -27,17 +28,23 @@ function Home(){
     // Direct to new blog
     const history = useHistory()
     const handleClick = ()=>{
-        if (context.token){
+        if (localStorage.getItem('token')){
             history.push('/posts/new');
         } else {
             history.push("/signup")
         }
     }
 
-    const createPostbutton = <Button onClick={handleClick} variant="light">
-    <FormattedMessage id="createNew"></FormattedMessage>
-    </Button>
-
+    const createPostbutton = (
+        <div className="row">
+            <Button onClick={handleClick} variant="light" style={{margin:"1rem"}}>
+                <FormattedMessage id="createNew"></FormattedMessage>
+            </Button>
+            <Button onClick={()=>{localStorage.removeItem('token'); window.location.reload()}} style={{margin:"1rem"}} variant="light">
+                <FormattedMessage id="signout"></FormattedMessage>
+            </Button>
+        </div>
+    )
     const signupButtons =(
         <div className="row">
             <Button onClick={handleClick} variant="light" style={{margin:"1rem"}}>
@@ -59,7 +66,7 @@ function Home(){
                 <Jumbotron id="welcome" style ={{padding: "5rem", backgroundColor: "#02475e"}}>
                     <h1 style={{margin: "2rem 0", color:"#fefecc"}}><FormattedMessage id="greeting"></FormattedMessage></h1>
                 
-                    {context.token ? createPostbutton : signupButtons}
+                    {localStorage.getItem('token') ? createPostbutton : signupButtons}
                 </Jumbotron>
                 <Container>
                     <Row>

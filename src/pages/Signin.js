@@ -27,7 +27,7 @@ export default function Signup(){
 
     const handleSubmit = (data)=>{
         
-        BlogApi.register(data).then(result=>{
+        BlogApi.authenticate(data).then(result=>{
             const token = result.token
             localStorage.setItem("token", token)
             history.push('/')
@@ -40,7 +40,7 @@ export default function Signup(){
         <Container>
             <Jumbotron style ={{padding: "5rem", backgroundColor: "#02475e"}} >
             <h1 style={{margin: "2rem 0", color:"#fefecc"}}> 
-             Sign up
+             Sign in
             </h1> 
             </Jumbotron>
             <Form onChange={handleChange}>
@@ -57,15 +57,6 @@ export default function Signup(){
                     <Form.Control type="password" name="password" />
                 </Form.Group>
                 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control name="first_name"/>
-                </Form.Group>
-
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control name="last_name" />
-                </Form.Group>
 
                 <Button onClick={(e)=>{e.preventDefault();handleSubmit(formData)}} variant="primary" type="submit">
                     Submit
